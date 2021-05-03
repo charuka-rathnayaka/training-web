@@ -6,13 +6,14 @@ const DiaryCard =(props)=>{
             <div className={classes.DiaryCard} key={props.pos}>
             <div className={classes.DiaryCardContent}>
                 <p className={classes.DiaryCardTitle}>
-                   {props.title}
+                   {props.Title}
                 </p>
                 <p className={classes.DiaryCardAuthor}>
-                    {props.author}
+                    {props.Author}
                 </p>
-                <p className={classes.DiaryCardDescription} maxlength="20">
-                  {props.description.length<20 ?props.description : props.description.substring(0,20)}
+                <p className={classes.DiaryCardDescription} maxlength="40">
+                  {props.Description.length<40 ?props.Description : props.Description.substring(0,40)}
+                 
                 </p>
             </div>
             <button className={classes.DiaryCardShowMore}>
