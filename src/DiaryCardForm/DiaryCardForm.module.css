@@ -1,0 +1,34 @@
+.root{
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.DiaryTitle{
+    border-radius: 15px;
+    width:80%;
+    background-color: rgb(111, 184, 197);
+    border: 1px solid rgb(73, 183, 197);
+    height: 40px;
+    font-size: 18px;
+
+}
+.SubmitDiary{
+    background-color: rgb(111, 184, 197);
+    border: 1px solid rgb(73, 183, 197);
+    margin-left: 5%;
+    margin-right: 15px;
+    float: right;
+    height: 40px;
+    width:150px;
+    border-radius: 15px;
+}
+
+.DiaryDesc{
+    margin-top: 10px;
+    border-radius: 15px;
+    width:95%;
+    background-color: rgb(111, 184, 197);
+    border: 1px solid rgb(73, 183, 197);
+    height: 80px;
+    font-size: 18px;
+}

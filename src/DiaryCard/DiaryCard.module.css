@@ -1,0 +1,53 @@
+.DiaryCard{
+    text-align: left;
+    margin:16px;
+    border-radius:20px;
+    border-color: rgb(35, 54, 61);
+    padding-left: 8px;
+    width: 300px;
+    height:auto;
+    border: 3px solid rgb(73, 183, 197);
+    background-color: rgb(131, 221, 224);
+    box-sizing:border-box;
+  }
+
+  @media(min-width:992px){
+      .BlogCard{
+        width: 45%;
+        display: inline-block;
+      }
+  }
+
+  .DiaryCardTitle{
+    margin-top: 10px;
+    margin-bottom: 3px;
+    font-size: 24px;
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  .DiaryCardAuthor{
+      margin-top: 0;
+      margin-bottom: 5px;
+    font-size: 18px;
+    color: rgb(82, 76, 76);
+  }
+  .DiaryCardShowMore{
+      margin-top: 15px;
+    margin-bottom: 10px;
+    background-color: rgb(131, 221, 224);
+    padding:8px;
+    border: transparent;
+    font-size: 16px;
+  }
+
+  .DiaryCardShowMore:hover {
+    background-color: #45cece; /* Green */
+    border-radius:20px;
+  }
+
+  @media(min-width:992px){
+    .DiaryCard{
+      
+      display: inline-block;
+    }
+}
