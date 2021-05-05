@@ -1,0 +1,52 @@
+.SigninForm{
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    width: 700px;
+    height: 280px;
+    background-color: azure;
+    border-radius: 10px;
+}
+
+.Title{
+    padding-left: 12px;
+    text-align: left;
+    font-size: 18px;
+}
+.SignIn{
+    
+    text-align: center;
+    font-size: 35px;
+    color: rgb(51, 51, 194);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+.FormElement{
+    display: inline-block;
+    align-content:space-between;
+}
+.Nickname{
+    margin-right: 40px;
+    height: 40px;
+    width:400px;
+}
+.RandomNickname{
+    height: 30px;
+    font-size: 18px;
+    width: 100px;
+    border-radius: 7px;
+    background-color: rgb(40, 86, 156);
+    color: white;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+
+}
+.SubmitNickname{
+    margin-top: 15px;
+    height: 40px;
+    font-size: 18px;
+    width: 140px;
+    border-radius: 7px;
+    background-color: rgb(40, 86, 156);
+    color: white;
+}
