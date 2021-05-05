@@ -2,7 +2,12 @@
 .grow {
     flexGrow: 1;
   }
-.title {
+.AppBar{
+  position: fixed;
+    top: 0;
+    z-index: 999;
+}
+  .title {
     font-weight: bold;
   }
 .search {

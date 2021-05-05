@@ -16,7 +16,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
 import classes from './TopBar.module.css';
-import ProfileMenu from './components/profile/profileMenu.js';
+import ProfileMenu from '../profile/profileMenu.js';
 //------
 const clickNot=()=>{
     console.log('Notification Clicked');
@@ -55,7 +55,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static"  style={{ backgroundColor: 'rgb(100, 190, 202)', boxShadow: 'none'}}>
+      <AppBar  className={classes.AppBar} style={{ backgroundColor: 'rgb(100, 190, 202)', boxShadow: 'none'}}>
         <Toolbar>
           
           <Typography className={classes.title} variant="h5" noWrap>
@@ -74,7 +74,7 @@ export default function PrimarySearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          <div className={classes.grow} />
+          <div className={classes.grow}></div>
           <p>|</p>
           <div className={classes.sectionDesktop}>
             
