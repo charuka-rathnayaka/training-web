@@ -1,75 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
-import DiaryCard from './components/DiaryCard/DiaryCard.js';
-import DiaryCardForm from './components/DiaryCardForm/DiaryCardForm.js';
-import PrimarySearchAppBar from './components/TopBar/TopBar.js';
-import React,{Component,useState,useEffect} from 'react';
-import firebase from './config.js';
-import 'firebase/firestore';
-import {connect} from 'react-redux';
-import mapDispatchtoProps from './store/Action.js';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Home from './Home.js';
+import SignIn from './SignIn';
 
-class App extends React.Component{
-  constructor(props){
-    super(props);
-    this.ref=firebase.firestore().collection('Diaries');
-    this.unSubscribe=null;
-  }
-  state={
-    diaries:[],
-  };
-      
-      componentDidMount(){
-        this.unSubscribe=this.ref.onSnapshot(this.onCollectionUpdate);
-        
-      }
-      
-      onCollectionUpdate=(querySnapshot)=>{
-        const diary_data=[];
-        querySnapshot.forEach((doc)=>{
-          const {Title,Author,Description}=doc.data();
-          //console.log("doc",doc.data())
-          diary_data.push({
-            key:doc.id,
-            Title,
-            Author,
-            Description
-          });
-
-        });
-        return this.props.GetData(diary_data);
-           
-      }
-       
-
-      render(){
-      
-        const diaryCards= this.props.diary_data.map((product)=>{
-          //console.log("from redux",this.props.diary_data);
-          return(
-            <DiaryCard Title={product.Title} Description={product.Description} key={product.id} Author={product.Author}  />
-          )
-        });
-
-        
-
-
+function App() {
   return (
-    <div className="App">
-      <PrimarySearchAppBar/>
-      <div>
-      <DiaryCardForm/>
+    <Router>
+      <div className="App">
+        <div className='Pages'>
+          <Switch>
+            <Route exact path="/">
+              <SignIn/>
+            </Route>
+            <Route path="/home">
+              <Home/>
+            </Route>
+          </Switch>
+        </div>
       </div>
-      {diaryCards}
-    </div>
+    </Router>
   );
-      }
 }
 
-const mapStatetoProps=state=>{
-  return{
-    diary_data:state.diary_data
-}
-}
-
-export default connect(mapStatetoProps,mapDispatchtoProps)(App);
+export default App;
