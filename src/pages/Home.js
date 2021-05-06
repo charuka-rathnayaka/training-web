@@ -1,13 +1,13 @@
 //import logo from './logo.svg';
 //import './App.css';
-import DiaryCard from './components/DiaryCard/DiaryCard.js';
-import DiaryCardForm from './components/DiaryCardForm/DiaryCardForm.js';
-import PrimarySearchAppBar from './components/TopBar/TopBar.js';
+import DiaryCard from '../components/DiaryCard/DiaryCard.js';
+import DiaryCardForm from '../components/DiaryCardForm/DiaryCardForm.js';
+import PrimarySearchAppBar from '../components/TopBar/TopBar.js';
 import React,{Component,useState,useEffect} from 'react';
-import firebase from './config.js';
+import firebase from '../config.js';
 import 'firebase/firestore';
 import {connect} from 'react-redux';
-import mapDispatchtoProps from './store/Action.js';
+import mapDispatchtoProps from '../store/Action.js';
 
 class Home extends React.Component{
   constructor(props){
@@ -15,10 +15,6 @@ class Home extends React.Component{
     this.ref=firebase.firestore().collection('Diaries');
     this.unSubscribe=null;
   }
-  state={
-    diaries:[],
-  };
-      
       componentDidMount(){
         this.unSubscribe=this.ref.onSnapshot(this.onCollectionUpdate);
         
@@ -50,19 +46,15 @@ class Home extends React.Component{
             <DiaryCard Title={product.Title} Description={product.Description} key={product.id} Author={product.Author}  />
           )
         });
-
-        
-
-
-  return (
-    <div className="Home">
-      <PrimarySearchAppBar/>
-      <div>
-      <DiaryCardForm/>
-      </div>
-      {diaryCards}
-    </div>
-  );
+          return (
+            <div className="Home">
+              <PrimarySearchAppBar/>
+              <div>
+              <DiaryCardForm/>
+              </div>
+              {diaryCards}
+            </div>
+          );
       }
 }
 

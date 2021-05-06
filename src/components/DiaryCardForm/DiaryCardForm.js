@@ -23,16 +23,20 @@ class DiaryCardForm extends React.Component{
         if((this.props.diary_title.length>0)||(this.props.diary_desc.length>0)){
             var DiaryTitle=this.props.diary_title;
             var DiaryDesc=this.props.diary_desc;
+            var nickname=this.props.nickname;
             if(this.props.diary_title.length==0){
                 DiaryTitle="...";
             }
             if(this.props.diary_desc.length==0){
                 DiaryDesc="...";
             }
+            if(this.props.nickname.length==0){
+                nickname="...";
+            }
             firebase.firestore().collection('Diaries').add({
                 Title:DiaryTitle,
                 Description:DiaryDesc,
-                Author:"Anoynumus",
+                Author:nickname,
                 TimeStamp:new Date()
             }).then(()=>{
                 return this.props.EmptyTitleDesc();
@@ -66,31 +70,9 @@ const mapStatetoProps=state=>{
     return{
         DiaryTitleClicked:state.DiaryTitleClicked,
         diary_title:state.diary_title,
-        diary_desc:state.diary_desc
+        diary_desc:state.diary_desc,
+        nickname:state.nickname
     }
 }
-/*     
-const mapDispatchtoProps = dispatch =>{
-    
-    return{
-        TitleClicked:()=>dispatch({
-            type:'Title Clicked'
-        }),
-        TitleChanged:(event)=>dispatch({
-            type:'Title Changed',
-            payload:event.target.value
-        }),
-        DescriptionChanged:(event)=>dispatch({
-            type:'Desc Changed',
-            payload:event.target.value
-        }),
-        EmptyTitleDesc:()=>dispatch({
-            type:'Empty Form'
-        }),
-    }
-}
-*/
+
 export default connect(mapStatetoProps,mapDispatchtoProps)(DiaryCardForm);
-
-
-//export default DiaryCardForm;

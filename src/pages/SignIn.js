@@ -2,6 +2,8 @@ import React,{Component,useState,useEffect} from 'react';
 import classes from './SignIn.module.css';
 import {connect} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import mapDispatchtoProps from '../store/Action.js';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 
 const SignIn =(props)=>{
@@ -19,19 +21,23 @@ const handleSubmit=()=> {
                 <p className={classes.SignIn}>Sign In</p>
                 <form noValidate onSubmit={()=>handleSubmit()}>
                     <div className={classes.FormElement}>
-                        <input type='text'  placeholder="  Your Nickname" className={classes.Nickname} ></input>
+                        <input type='text' value={props.nickname}  onChange={(props.NicknameChanged)} placeholder="  Your Nickname" className={classes.Nickname} ></input>
                         <input type='button' className={classes.RandomNickname} value="RANDOM"></input>
                     </div>
                     <div>
                        
-                        <input type='submit' className={classes.SubmitNickname} value="Submit"></input>
+                        <input type='submit' className={classes.SubmitNickname} value="Continue" disabled={props.nickname.length==0 ? true : false}></input>
                     </div>
                 </form>
             </div>
         )
       }
 
+const mapStatetoProps=state=>{
+    return{
+        nickname:state.nickname
+      }
+      }
 
 
-
-export default SignIn;
+export default connect(mapStatetoProps,mapDispatchtoProps)(SignIn);

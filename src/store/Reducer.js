@@ -2,7 +2,8 @@ const InitialState={
     DiaryTitleClicked:false,
     diary_title:'',
     diary_desc:'',
-    diary_data:[]
+    diary_data:[],
+    nickname:''
 };
 
 const reducer=(state=InitialState,action)=>{
@@ -26,6 +27,12 @@ const reducer=(state=InitialState,action)=>{
     if(action.type==="Get Data"){
         newState.diary_data=action.payload;
     }
+    if(action.type==='Nickname Changed'){
+        newState.nickname=action.payload;
+    }
+    /*if(action.type==="Submit Nickname"){
+        newState.nickname=action.payload;
+    }*/
     console.log("new State",newState);
     return newState;
 }
