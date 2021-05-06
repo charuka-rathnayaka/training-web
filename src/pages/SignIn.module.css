@@ -3,7 +3,7 @@
     margin: 0;
     position: absolute;
     top: 25%;
-    left: 20%;
+    left: 25%;
     width: 700px;
     height: 280px;
     background-color: azure;
@@ -36,9 +36,10 @@
     font-size: 18px;
     width: 100px;
     border-radius: 7px;
-    background-color: rgb(40, 86, 156);
+    background-color: rgb(72, 168, 175);
     color: white;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border: 1px rgb(103, 103, 201);
 
 }
 .SubmitNickname{
@@ -47,6 +48,11 @@
     font-size: 18px;
     width: 140px;
     border-radius: 7px;
-    background-color: rgb(40, 86, 156);
+    background-color: rgb(76, 162, 173);
     color: white;
+    border: 1px rgb(67, 122, 167);
 }
+.SubmitNickname:disabled {
+    background-color:white;
+    color:rgb(167, 155, 155);
+  }

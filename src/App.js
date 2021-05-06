@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Home from './Home.js';
-import SignIn from './SignIn';
+import Home from './pages/Home.js';
+import SignIn from './pages/SignIn';
 
 function App() {
   return (
