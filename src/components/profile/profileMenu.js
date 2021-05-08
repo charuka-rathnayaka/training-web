@@ -1,6 +1,6 @@
 import React from 'react';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 //import classes from './profileMenu.module.css';
 const useStyles = makeStyles(() => ({
     menuPaper: {
