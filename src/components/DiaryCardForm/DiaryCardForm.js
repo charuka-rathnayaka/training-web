@@ -21,6 +21,7 @@ function DiaryCardForm(state){
       
     )
     const emptyTitleDesc=(event)=>{
+        console.log('empty title desc');
         setDiaryTitleClicked(false);
         setTitle('');
         setDescription('');

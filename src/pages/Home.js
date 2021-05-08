@@ -3,29 +3,25 @@
 import DiaryCard from '../components/DiaryCard/DiaryCard.js';
 import DiaryCardForm from '../components/DiaryCardForm/DiaryCardForm.js';
 import PrimarySearchAppBar from '../components/TopBar/TopBar.js';
-import React from 'react';
+import React,{useEffect } from 'react';
 import firebase from '../config.js';
 import 'firebase/firestore';
-import {connect} from 'react-redux';
-import mapDispatchtoProps from '../store/Action.js';
+import {connect, useDispatch} from 'react-redux';
+//import {GetData} from '../store/Action.js';
+//import mapDispatchtoProps from '../store/Action.js';
 
-
-class Home extends React.Component{
-  constructor(props){
-    super(props);
-    this.ref=firebase.firestore().collection('Diaries');
-    this.unSubscribe=null;
-  }
-      componentDidMount(){
-        this.unSubscribe=this.ref.onSnapshot(this.onCollectionUpdate);
+const Home=(state)=>{
+  const dispatch=useDispatch();
+  
+    useEffect(()=>{
+        firebase.firestore().collection('Diaries').onSnapshot(onCollectionUpdate);
         
-      }
+      });
       
-      onCollectionUpdate=(querySnapshot)=>{
+      const onCollectionUpdate=(querySnapshot)=>{
         const diary_data=[];
         querySnapshot.forEach((doc)=>{
           const {Title,Author,Description}=doc.data();
-          //console.log("doc",doc.data())
           diary_data.push({
             key:doc.id,
             Title,
@@ -34,15 +30,13 @@ class Home extends React.Component{
           });
 
         });
-        return this.props.GetData(diary_data);
+        return dispatch({type:'Get Data',
+        payload:diary_data})
+        //return props.GetData(diary_data);
            
       }
-       
 
-      render(){
-      
-        const diaryCards= this.props.diary_data.map((product)=>{
-          //console.log("from redux",this.props.diary_data);
+        const diaryCards= state.diary_data.map((product)=>{
           return(
             <DiaryCard Title={product.Title} Description={product.Description} key={product.id} Author={product.Author}  />
           )
@@ -56,7 +50,7 @@ class Home extends React.Component{
               {diaryCards}
             </div>
           );
-      }
+      
 }
 
 const mapStatetoProps=state=>{
@@ -65,4 +59,4 @@ const mapStatetoProps=state=>{
 }
 }
 
-export default connect(mapStatetoProps,mapDispatchtoProps)(Home);
+export default connect(mapStatetoProps)(Home);
