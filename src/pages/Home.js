@@ -3,7 +3,7 @@
 import DiaryCard from '../components/DiaryCard/DiaryCard.js';
 import DiaryCardForm from '../components/DiaryCardForm/DiaryCardForm.js';
 import PrimarySearchAppBar from '../components/TopBar/TopBar.js';
-import React,{Component,useState,useEffect} from 'react';
+import React from 'react';
 import firebase from '../config.js';
 import 'firebase/firestore';
 import {connect} from 'react-redux';

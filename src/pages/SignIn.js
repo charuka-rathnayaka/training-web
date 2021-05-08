@@ -1,9 +1,9 @@
-import React,{Component,useState,useEffect} from 'react';
+import React from 'react';
 import classes from './SignIn.module.css';
 import {connect} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import mapDispatchtoProps from '../store/Action.js';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+
 
 
 const SignIn =(props)=>{
@@ -26,7 +26,7 @@ const handleSubmit=()=> {
                     </div>
                     <div>
                        
-                        <input type='submit' className={classes.SubmitNickname} value="Continue" disabled={props.nickname.length==0 ? true : false}></input>
+                        <input type='submit' className={classes.SubmitNickname} value="Continue" disabled={props.nickname.length===0 ? true : false}></input>
                     </div>
                 </form>
             </div>

@@ -1,45 +1,54 @@
-import React,{Component} from 'react';
-
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import React,{ useState } from 'react';
 import classes from './DiaryCardForm.module.css';
 import firebase from '../../config.js';
 import 'firebase/firestore';
 import {connect} from 'react-redux';
-import mapDispatchtoProps from '../../store/Action.js';
 
-class DiaryCardForm extends React.Component{
-    
-    constructor(props) {
-        super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
-      }
-     emptyData(){
-        return this.props.dispatch({ type: "Empty Form"});
+function DiaryCardForm(state){
+    const [title,setTitle] = useState('');
+    const [description,setDescription] = useState('');
+    const [diaryTitleClicked,setDiaryTitleClicked] = useState(false);
+
+    const changeTitle=(event)=>(
+        setTitle(event.target.value)
+    )
+    const changeDesc=(event)=>(
+        setDescription(event.target.value)
+    )
+    const titleClicked=(event)=>(
+       setDiaryTitleClicked(true)
+      // console.log(state.nickname)
+      
+    )
+    const emptyTitleDesc=(event)=>{
+        setDiaryTitleClicked(false);
+        setTitle('');
+        setDescription('');
     }
-    
-    handleSubmit(event) {
-        
-        if((this.props.diary_title.length>0)||(this.props.diary_desc.length>0)){
-            var DiaryTitle=this.props.diary_title;
-            var DiaryDesc=this.props.diary_desc;
-            var nickname=this.props.nickname;
-            if(this.props.diary_title.length==0){
-                DiaryTitle="...";
+   
+  
+    function handleSubmit(event) { 
+      
+        if((title.length>0)||(description.length>0)){
+            var diaryTitle=title;
+            var diaryDesc=description;
+            var nickname=state.nickname;
+            if(diaryTitle.length===0){
+                diaryTitle="...";
             }
-            if(this.props.diary_desc.length==0){
-                DiaryDesc="...";
+            if(diaryDesc.length===0){
+                diaryDesc="...";
             }
-            if(this.props.nickname.length==0){
+            if(nickname.length===0){
                 nickname="...";
             }
             firebase.firestore().collection('Diaries').add({
-                Title:DiaryTitle,
-                Description:DiaryDesc,
+                Title:diaryTitle,
+                Description:diaryDesc,
                 Author:nickname,
                 TimeStamp:new Date()
             }).then(()=>{
-                return this.props.EmptyTitleDesc();
+                return emptyTitleDesc();
             }
             );
             
@@ -50,29 +59,26 @@ class DiaryCardForm extends React.Component{
         event.preventDefault();
         
       }
-    render(){
-       const description=<textarea value={this.props.diary_desc}  onChange={this.props.DescriptionChanged} type='text' rows='5'  placeholder=" Enter Description" className={classes.DiaryDesc} ></textarea>
+    
+       const descInput=<textarea value={description}  onChange={changeDesc} type='text' rows='5'  placeholder=" Enter Description" className={classes.DiaryDesc} ></textarea>
         return(
             <div className={classes.DiaryCardForm}>
-                <form className={classes.root} noValidate autoComplete="off" onSubmit={this.handleSubmit}>
+                <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
                
-                    <input type='text' value={this.props.diary_title}  onChange={(this.props.TitleChanged)}  placeholder="  Submit New" className={classes.DiaryTitle} onClick={this.props.TitleClicked}></input>
+                    <input type='text' value={title}  onChange={changeTitle}  placeholder="  Submit New" className={classes.DiaryTitle} onClick={titleClicked}></input>
                
                     <input type='submit' className={classes.SubmitDiary} value="Submit"></input>
-                    {this.props.DiaryTitleClicked ? description:null}
+                    {diaryTitleClicked ? descInput:null}
                 </form>
             </div>
         );
-        }
+        
     };
 
 const mapStatetoProps=state=>{
     return{
-        DiaryTitleClicked:state.DiaryTitleClicked,
-        diary_title:state.diary_title,
-        diary_desc:state.diary_desc,
         nickname:state.nickname
     }
 }
 
-export default connect(mapStatetoProps,mapDispatchtoProps)(DiaryCardForm);
+export default connect(mapStatetoProps)(DiaryCardForm);
