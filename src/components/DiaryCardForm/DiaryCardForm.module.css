@@ -32,3 +32,42 @@
     height: 80px;
     font-size: 18px;
 }
+@media(max-width:1150px){
+    .DiaryTitle{
+        border-radius: 15px;
+        width:70%;
+        background-color: rgb(111, 184, 197);
+        border: 1px solid rgb(73, 183, 197);
+        height: 40px;
+        font-size: 18px;
+    
+    }
+}
+  @media(max-width:740px){
+    .DiaryTitle{
+        border-radius: 15px;
+        width:50%;
+
+        height: 30px;
+        font-size: 16px;
+    
+    }
+    .SubmitDiary{
+        margin-top: 10%;
+        margin-left: 5%;
+        margin-right: 15px;
+        float: right;
+        height: 30px;
+        width:150px;
+        border-radius: 15px;
+    }
+}
+@media(max-width:450px){
+    .DiaryTitle{
+        border-radius: 15px;
+        width:30%;
+        height: 25px;
+        font-size: 16px;
+    
+    }
+}

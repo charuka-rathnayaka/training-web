@@ -19,7 +19,7 @@ const reducer=(state=InitialState,action)=>{
         newState.diary_desc=action.payload;
     }
     if(action.type==='Empty Form'){
-        console.log('Empty form called');
+        //console.log('Empty form called');
         newState.diary_title="";
         newState.diary_desc="";
         newState.DiaryTitleClicked=false;
