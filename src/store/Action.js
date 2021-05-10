@@ -1,16 +1,11 @@
-const mapDispatchtoProps = dispatch =>{
-    
-    return{
-        GetData:(diary_data)=>dispatch({
-            type:'Get Data',
-            payload:diary_data
-        }),
-        NicknameChanged:(event)=>dispatch({
-            type:'Nickname Changed',
-            payload:event.target.value
-        })
-    }
-}
+/* eslint-disable*/
 
 
-export default mapDispatchtoProps;
+export const nicknameChanged = (nick) => ({
+    type: 'Nickname Changed',
+    payload: nick,
+  });
+export const GetData = (diaryData) => ({
+    type: 'Get Data',
+    payload: diaryData,
+  });
