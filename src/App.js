@@ -2,8 +2,8 @@
 // import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Home from './pages/Home.js';
-import SignIn from './pages/SignIn';
+import Home from './views/homePage/Home.js';
+import SignIn from './views/signInPage/SignIn';
 
 function App() {
   return (

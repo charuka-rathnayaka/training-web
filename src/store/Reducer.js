@@ -12,9 +12,7 @@ const reducer=(state=InitialState, action)=>{
   if (action.type==='Nickname Changed') {
     newState.nickname=action.payload;
   }
-  //console.log('new State', newState);
   
- 
   return newState;
 };
 
