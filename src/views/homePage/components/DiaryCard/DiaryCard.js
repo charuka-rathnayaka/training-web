@@ -12,10 +12,10 @@ const DiaryCard =(props)=>{
         <p className={classes.DiaryCardAuthor}>
           {props.Author}
         </p>
-        <p className={classes.DiaryCardDescription} maxLength="40">
-          {props.Description.length<40 ?props.Description : props.Description.substring(0, 40)}
+        <div className={classes.DiaryCardDescription} maxLength="40">
+          {props.Description.length<40 ?props.Description : props.Description.substring(0, 40)+"..."}
 
-        </p>
+        </div>
       </div>
       <button className={classes.DiaryCardShowMore}>
                 Show More

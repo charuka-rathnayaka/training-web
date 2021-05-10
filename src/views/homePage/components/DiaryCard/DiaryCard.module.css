@@ -39,7 +39,11 @@
     border: transparent;
     font-size: 16px;
   }
-
+.DiaryCardDescription{
+  display: table-cell;
+ 
+  
+}
   .DiaryCardShowMore:hover {
     background-color: #45cece; /* Green */
     border-radius:20px;
