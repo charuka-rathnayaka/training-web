@@ -1,8 +1,7 @@
-/* eslint-disable*/
 import React from 'react';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {makeStyles} from '@material-ui/core/styles';
-// import classes from './profileMenu.module.css';
+
 const useStyles = makeStyles(() => ({
   menuPaper: {
     backgroundColor: 'lightblue',
@@ -22,11 +21,16 @@ const ProfileMenu = (props)=>{
       onClose={props.handleMenuClose}
       classes={{paper: classes.menuPaper}}
     >
-      <props.MenuItem onClick={props.handleMenuClose} styles={ {backgroundColor: 'rgb(100, 190, 202)'}}>My Profile</props.MenuItem>
-      <props.MenuItem onClick={props.handleMenuClose}>My Calendar</props.MenuItem>
-      <props.MenuItem onClick={props.handleMenuClose}>My Inbox</props.MenuItem>
+      <props.MenuItem onClick={props.handleMenuClose}
+        styles={ {backgroundColor: 'rgb(100, 190, 202)'}}>
+        My Profile</props.MenuItem>
+      <props.MenuItem onClick={props.handleMenuClose}>
+        My Calendar</props.MenuItem>
+      <props.MenuItem onClick={props.handleMenuClose}>
+        My Inbox</props.MenuItem>
       <hr></hr>
-      <props.MenuItem onClick={props.handleMenuClose}><ExitToAppIcon/>Log Out</props.MenuItem>
+      <props.MenuItem onClick={props.handleMenuClose}><ExitToAppIcon/>
+        Log Out</props.MenuItem>
     </props.Menu>
   );
 };

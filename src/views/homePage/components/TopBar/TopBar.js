@@ -1,4 +1,3 @@
-/* eslint-disable*/
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -19,7 +18,10 @@ const clickNot=()=>{
 };
 // ------
 
-
+/**
+ * App bar for the app.
+ * @return {string} HTML for the app bar.
+ */
 export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   // const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -46,7 +48,8 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar className={classes.AppBar} style={{backgroundColor: 'rgb(100, 190, 202)', boxShadow: 'none'}}>
+      <AppBar className={classes.AppBar}
+        style={{backgroundColor: 'rgb(100, 190, 202)', boxShadow: 'none'}}>
         <Toolbar>
 
           <Typography className={classes.title} variant="h5" noWrap>
@@ -69,7 +72,8 @@ export default function PrimarySearchAppBar() {
           <p>|</p>
           <div className={classes.sectionDesktop}>
 
-            <IconButton aria-label="show 17 new notifications" color="inherit" onClick={clickNot}>
+            <IconButton aria-label="show 17 new notifications"
+              color="inherit" onClick={clickNot}>
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />
               </Badge>
@@ -90,7 +94,9 @@ export default function PrimarySearchAppBar() {
         </Toolbar>
       </AppBar>
 
-      <ProfileMenu anchorEl={anchorEl} Menu={Menu} menuId={menuId} isMenuOpen={isMenuOpen} handleMenuClose={handleMenuClose} MenuItem={MenuItem} />
+      <ProfileMenu anchorEl={anchorEl} Menu={Menu} menuId={menuId}
+        isMenuOpen={isMenuOpen} handleMenuClose={handleMenuClose}
+        MenuItem={MenuItem} />
     </div>
   );
 }

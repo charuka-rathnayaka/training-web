@@ -1,31 +1,32 @@
-/* eslint-disable*/
-import React, {useState,useRef, useEffect} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import classes from './DiaryCardForm.module.css';
-import firebase from '../../../../config.js';
 import 'firebase/firestore';
-import {useSelector,useDispatch} from 'react-redux';
-import { addCardData } from '../../action.js'
-
+import {useSelector, useDispatch} from 'react-redux';
+import {addCardData} from '../../action.js';
+/**
+ * Form for adding diary card React App component.
+ * @return {String} Diary Card form.
+ */
 function DiaryCardForm() {
-  const nickName = useSelector(state => state.nickname);
+  const nickName = useSelector((state) => state.nickname);
   const dispatch=useDispatch();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [diaryTitleClicked, setDiaryTitleClicked] = useState(false);
 
- 
+
   const ref = useRef(null);
   useEffect(() => {
-    document.addEventListener("click", handleClickOutside, true);
+    document.addEventListener('click', handleClickOutside, true);
     return () => {
-      document.removeEventListener("click", handleClickOutside, true);
+      document.removeEventListener('click', handleClickOutside, true);
     };
   });
-  const handleClickOutside = event => {
+  const handleClickOutside = (event) => {
     if (ref.current && !ref.current.contains(event.target)) {
-     if((title.length===0)&&(description.length===0)){
-      setDiaryTitleClicked(false);
-     }
+      if ((title.length===0)&&(description.length===0)) {
+        setDiaryTitleClicked(false);
+      }
     }
   };
 
@@ -46,7 +47,10 @@ function DiaryCardForm() {
     setDescription('');
   };
 
-
+  /**
+  * Add two numbers.
+  * @param {object} event The second number.
+  */
   function handleSubmit(event) {
     event.preventDefault();
     if ((title.length>0)||(description.length>0)) {
@@ -62,28 +66,35 @@ function DiaryCardForm() {
       if (nickname.length===0) {
         nickname='...';
       }
-      
+
       dispatch(addCardData({
         Title: diaryTitle,
         Description: diaryDesc,
         Author: nickname,
         TimeStamp: new Date(),
-      }))
+      }));
       emptyTitleDesc();
     } else {
       console.log('Ëither Title or the Descrption should have value');
     }
-    
   }
 
-  const descInput=<textarea value={description} onChange={changeDesc} type='text' rows='5' placeholder=" Enter Description" className={classes.DiaryDesc} ></textarea>;
+  const descInput=<textarea value={description}
+    onChange={changeDesc} type='text' rows='5'
+    placeholder=" Enter Description" className={classes.DiaryDesc} ></textarea>;
   return (
     <div className={classes.DiaryCardForm} ref={ref}>
-      <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
+      <form className={classes.root} noValidate autoComplete="off"
+        onSubmit={handleSubmit}>
 
-        <input type='text' value={title} onChange={changeTitle} placeholder="  Submit New" className={classes.DiaryTitle} onClick={titleClicked}></input>
+        <input type='text' value={title} onChange={changeTitle}
+          placeholder="  Submit New" className={classes.DiaryTitle}
+          onClick={titleClicked}>
+        </input>
 
-        <input type='submit' className={classes.SubmitDiary} value="Submit"></input>
+        <input type='submit' className={classes.SubmitDiary}
+          value="Submit">
+        </input>
         {diaryTitleClicked ? descInput:null}
       </form>
     </div>
