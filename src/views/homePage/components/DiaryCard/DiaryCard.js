@@ -1,4 +1,3 @@
-/* eslint-disable*/
 import React from 'react';
 import classes from './DiaryCard.module.css';
 
@@ -13,7 +12,8 @@ const DiaryCard =(props)=>{
           {props.Author}
         </p>
         <div className={classes.DiaryCardDescription} maxLength="40">
-          {props.Description.length<40 ?props.Description : props.Description.substring(0, 40)+"..."}
+          {props.Description.length<40 ?
+          props.Description : props.Description.substring(0, 40)+'...'}
 
         </div>
       </div>

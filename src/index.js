@@ -1,17 +1,16 @@
-/* eslint-disable*/
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {createStore,applyMiddleware} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import reducer from './store/Reducer.js';
 import {Provider} from 'react-redux';
-import createSagaMiddleware from 'redux-saga'
+import createSagaMiddleware from 'redux-saga';
 import {rootSaga} from './rootSaga.js';
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 
-const store=createStore(reducer,applyMiddleware(sagaMiddleware));
+const store=createStore(reducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(

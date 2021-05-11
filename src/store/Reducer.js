@@ -1,4 +1,4 @@
-/* eslint-disable*/
+
 const InitialState={
   diaryData: [],
   nickname: '',
@@ -12,7 +12,6 @@ const reducer=(state=InitialState, action)=>{
   if (action.type==='Nickname Changed') {
     newState.nickname=action.payload;
   }
-  
   return newState;
 };
 

@@ -1,10 +1,12 @@
-/* eslint-disable*/
-// import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './views/homePage/Home.js';
 import SignIn from './views/signInPage/SignIn';
-
+import React from 'react';
+/**
+ * Main React App component.
+ * @return {String} HTML tag.
+ */
 function App() {
   return (
     <Router>

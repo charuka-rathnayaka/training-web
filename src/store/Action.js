@@ -1,11 +1,9 @@
-/* eslint-disable*/
-
-
 export const nicknameChanged = (nick) => ({
-    type: 'Nickname Changed',
-    payload: nick,
-  });
+  type: 'Nickname Changed',
+  payload: nick,
+});
+
 export const GetData = (diaryData) => ({
-    type: 'Get Data',
-    payload: diaryData,
-  });
+  type: 'Get Data',
+  payload: diaryData,
+});
